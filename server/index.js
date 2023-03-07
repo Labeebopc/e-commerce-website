@@ -2,9 +2,10 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const mongoose = require('mongoose')
+const data  = require('./data/data.js')
 const env = require("dotenv").config()
+const productRouter = require('./routes/productRouter.js')
 mongoose.set('strictQuery', false)
-
 
 
 
@@ -14,6 +15,9 @@ app.use(express.json())
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
+
+
+app.use('/api/v1/products',productRouter )
 
 
 
